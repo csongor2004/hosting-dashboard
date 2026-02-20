@@ -1,0 +1,47 @@
+:root {
+    --rackhost-blue: #0056b3;
+    --dark-bg: #f8f9fa;
+}
+
+body {
+    background-color: var(--dark-bg);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-brand {
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--rackhost-blue) !important;
+}
+
+/* Kártyák feldobása */
+.card {
+    border: none;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    }
+
+/* Táblázat stílus */
+.table thead {
+    background-color: var(--rackhost-blue);
+    color: white;
+    border-radius: 10px 10px 0 0;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0,86,179,0.05);
+}
+
+/* Státusz gombok */
+.badge-aktív {
+    background-color: #28a745;
+}
+
+.badge-lejárt {
+    background-color: #dc3545;
+}

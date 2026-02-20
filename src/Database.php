@@ -48,4 +48,14 @@ class Database
     {
         return checkdnsrr($domain, "MX") ? 'Van' : 'Nincs';
     }
+    // Port figyelő: Ellenőrzi, hogy él-e a webszerver (HTTP 80)
+    public function checkService($domain)
+    {
+        $connection = @fsockopen($domain, 80, $errno, $errstr, 2); 
+        if ($connection) {
+            fclose($connection);
+            return true;
+        }
+        return false;
+    }
 }
