@@ -14,7 +14,6 @@ body {
     color: var(--rackhost-blue) !important;
 }
 
-/* Kártyák feldobása */
 .card {
     border: none;
     border-radius: 12px;
@@ -26,18 +25,15 @@ body {
         box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
     }
 
-/* Táblázat stílus */
 .table thead {
     background-color: var(--rackhost-blue);
     color: white;
-    border-radius: 10px 10px 0 0;
 }
 
 .table-hover tbody tr:hover {
     background-color: rgba(0,86,179,0.05);
 }
 
-/* Státusz gombok */
 .badge-aktív {
     background-color: #28a745;
 }

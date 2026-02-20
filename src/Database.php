@@ -28,7 +28,7 @@ class Database
 
     public function addDomain($name, $email)
     {
-        $stmt = $this->pdo->prepare("INSERT INTO domains (domain_name, owner_email) VALUES (?, ?)");
+        $stmt = $this->pdo->prepare("INSERT INTO domains (domain_name, owner_email, expiry_date) VALUES (?, ?, DATE_ADD(NOW(), INTERVAL 1 YEAR))");
         return $stmt->execute([$name, $email]);
     }
 
@@ -36,6 +36,12 @@ class Database
     {
         $stmt = $this->pdo->prepare("DELETE FROM domains WHERE id = ?");
         return $stmt->execute([$id]);
+    }
+
+    public function updateStatus($id, $status)
+    {
+        $stmt = $this->pdo->prepare("UPDATE domains SET status = ? WHERE id = ?");
+        return $stmt->execute([$status, $id]);
     }
 
     public function getDomainIP($domain)
@@ -48,11 +54,11 @@ class Database
     {
         return checkdnsrr($domain, "MX") ? 'Van' : 'Nincs';
     }
-    // Port figyelő: Ellenőrzi, hogy él-e a webszerver (HTTP 80)
-    public function checkService($domain)
+
+    public function checkService($domain, $port = 80)
     {
-        $connection = @fsockopen($domain, 80, $errno, $errstr, 2); 
-        if ($connection) {
+        $connection = @fsockopen($domain, $port, $errno, $errstr, 2);
+        if (is_resource($connection)) {
             fclose($connection);
             return true;
         }

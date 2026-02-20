@@ -1,4 +1,3 @@
--- Kibővített Hosting Dashboard Struktúra
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 
@@ -18,7 +17,6 @@ CREATE TABLE IF NOT EXISTS `domains` (
   `status` ENUM('aktív', 'lejárt', 'függőben') DEFAULT 'aktív',
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 
 INSERT INTO `domains` (`domain_name`, `owner_email`, `expiry_date`, `plan_type`, `status`) VALUES 
 ('peldadomain.hu', 'info@peldadomain.hu', '2027-05-12', 'pro', 'aktív'),
